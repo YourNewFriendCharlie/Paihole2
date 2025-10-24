@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pai Hole Express | Dive Into Thailand's Hippie Vortex</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Amatic+SC:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --forest-green: #2d5016;
+            --vibrant-green: #7cb342;
+            --sunset-orange: #ff6b35;
+            --deep-purple: #5b2c6f;
+            --mustard: #f4a261;
+            --electric-blue: #4ecdc4;
+            --cream: #fef9ef;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--cream);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(45, 80, 22, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-family: 'Amatic SC', cursive;
+            font-size: 2rem;
+            color: var(--mustard);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--mustard);
+        }
+
+        /* Hero Section with Video */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--forest-green) 50%, var(--sunset-orange) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="swirl" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M50,0 Q75,25 50,50 Q25,75 50,100" stroke="rgba(255,255,255,0.05)" fill="none" stroke-width="2"/></pattern></defs><rect width="100" height="100" fill="url(%23swirl)"/></svg>');
+            animation: swirl 60s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes swirl {
+            from { transform: rotate(0deg) scale(1); }
+            to { transform: rotate(360deg) scale(1.2); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            color: var(--cream);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero .tagline {
+            font-family: 'Amatic SC', cursive;
+            font-size: 2.5rem;
+            color: var(--mustard);
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .warning {
+            font-size: 1.2rem;
+            color: var(--electric-blue);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--sunset-orange), var(--mustard));
+            color: white;
+            padding: 1.2rem 3rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(255, 107, 53, 0.6); }
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 50px rgba(255, 107, 53, 0.7);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 10%;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--deep-purple);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--sunset-orange), var(--mustard));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* Intro Section */
+        .intro {
+            background: linear-gradient(135deg, var(--vibrant-green) 0%, var(--forest-green) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .intro p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Itinerary with Media */
+        .itinerary {
+            background: var(--cream);
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .day-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .day-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .day-media {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .day-content {
+            padding: 2rem;
+        }
+
+        .day-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            color: var(--sunset-orange);
+            margin-bottom: 1rem;
+        }
+
+        .event-title {
+            font-weight: 600;
+            color: var(--deep-purple);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .day-content p {
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* Media placeholder for when you add your videos */
+        .media-placeholder {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--deep-purple), var(--vibrant-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        /* Accommodations */
+        .accommodations {
+            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--forest-green) 100%);
+            color: white;
+        }
+
+        .accommodations .section-title {
+            color: var(--mustard);
+        }
+
+        .hostel-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: scale(1.05);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 0.5rem;
+            color: var(--mustard);
+        }
+
+        /* Activities */
+        .activities {
+            background: var(--cream);
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .activity-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .activity-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--vibrant-green), var(--electric-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .activity-content {
+            padding: 1.5rem;
+        }
+
+        .activity-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--deep-purple);
+            margin-bottom: 1rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, var(--sunset-orange) 0%, var(--mustard) 100%);
+            color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            text-align: right;
+        }
+
+        /* Booking */
+        .booking {
+            background: var(--cream);
+            text-align: center;
+        }
+
+        .booking-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--deep-purple);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--vibrant-green);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--forest-green);
+            color: white;
+            padding: 3rem 10%;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            font-size: 2rem;
+        }
+
+        .social-links a {
+            color: var(--mustard);
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 3rem 5%;
+            }
+
+            .days-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Upload Instructions */
+        .upload-note {
+            background: rgba(124, 179, 66, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+            border-left: 4px solid var(--vibrant-green);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Pai Hole Express</div>
+        <ul class="nav-links">
+            <li><a href="#intro">Vibe</a></li>
+            <li><a href="#itinerary">Itinerary</a></li>
+            <li><a href="#accommodations">Home Base</a></li>
+            <li><a href="#activities">Adventures</a></li>
+            <li><a href="#testimonials">Stories</a></li>
+            <li><a href="#booking">Book Now</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Pai Hole Express</h1>
+            <p class="tagline">Dive Into Thailand's Hippie Vortex!</p>
+            <p class="warning">⚠️ Warning: You Might Never Leave ⚠️</p>
+            <button class="cta-button" onclick="document.getElementById('booking').scrollIntoView({behavior: 'smooth'})">Book Your Escape</button>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section id="intro" class="intro fade-in">
+        <h2 class="section-title">Come for a Week, Stay for Months</h2>
+        <p>Pai's magic sucks you in with epic parties, soulful wellness, and a community that feels like home. Nestled in Northern Thailand's misty mountains, this legendary hippie paradise blends organic farms, jungle raves, and sunrise yoga into one intoxicating vortex.</p>
+        <p>Travelers arrive planning a quick visit but get caught in the Pai Hole—staying weeks or months for the freedom, vibes, and connections that change everything.</p>
+    </section>
+
+    <!-- Itinerary Section with Media -->
+    <section id="itinerary" class="itinerary fade-in">
+        <h2 class="section-title">Your 7-Day Journey</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">Every day starts with sunrise yoga and ends with unforgettable nights</p>
+        
+        <div class="days-grid">
+            <!-- Monday - Moon Beach -->
+            <div class="day-card">
+                <!-- Moon Beach Image -->
+                <img class="day-media" src="https://i.ibb.co/FVjV55j/moonbeach-pai.jpg" alt="Moon Beach Jungle Rave - Pai Thailand" style="object-fit: cover;">
+                <div class="day-content">
+                    <h3>🌙 Monday</h3>
+                    <div class="event-title">Moon Beach Jungle Rave</div>
+                    <p>Dance barefoot on sandy shores by the Pai River. Lasers, fire effects, psytrance & bass vibes from 2 PM into the night!</p>
+                    <a href="https://www.instagram.com/reel/DQCYAPFAfNL/" target="_blank" style="display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; background: linear-gradient(135deg, var(--electric-blue), var(--deep-purple)); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; font-size: 0.9rem;">📱 Watch Video</a>
+                </div>
+            </div>
+
+            <!-- Tuesday - Paradise Circus -->
+            <div class="day-card">
+                <!-- Paradise Circus Image -->
+                <img class="day-media" src="https://i.ibb.co/KxLMxQT/paradise-circus-fire.jpg" alt="Open Fire Stage at Paradise Circus - Pai" style="object-fit: cover;">
+                <div class="day-content">
+                    <h3>🔥 Tuesday</h3>
+                    <div class="event-title">Open Fire Stage @ Paradise Circus</div>
+                    <p>Show up, perform, or watch fire spinners and live music in a hidden banana grove amphitheater. Plus daily flow arts workshops!</p>
+                    <a href="https://www.instagram.com/p/DOarI9Ek_NH/" target="_blank" style="display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; background: linear-gradient(135deg, var(--sunset-orange), var(--mustard)); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; font-size: 0.9rem;">📱 Watch Video</a>
+                </div>
+            </div>
+
+            <!-- Wednesday - Barakan Tribe -->
+            <div class="day-card">
+                <!-- Barakan Tribe Image -->
+                <img class="day-media" src="https://i.ibb.co/v45JBmV/barakan-tribe-pai.jpg" alt="Barakan Tribe Trance Party - Pai" style="object-fit: cover;">
+                <div class="day-content">
+                    <h3>🌀 Wednesday</h3>
+                    <div class="event-title">Barakan Tribe Trance Party</div>
+                    <p>Hard-hitting psytrance in rice fields. Community connection, tribal vibes—lose yourself in the music.</p>
+                    <a href="https://www.instagram.com/p/DO5CtMCAfLt/" target="_blank" style="display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; background: linear-gradient(135deg, var(--deep-purple), var(--vibrant-green)); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; font-size: 0.9rem;">📱 Watch Video</a>
+                </div>
+            </div>
+
+            <!-- Thursday - Circus Show -->
+            <div class="day-card">
+                <!-- Circus Show Image -->
+                <img class="day-media" src="https://i.ibb.co/kVxvq3n/paradise-circus-show-pai.jpg" alt="Circus Show at Paradise Pai" style="object-fit: cover;">
+                <div class="day-content">
+                    <h3>🎪 Thursday</h3>
+                    <div class="event-title">Circus Show @ Paradise Pai</div>
+                    <p>World-class performers bring fire shows, acrobatics & flow arts at 8:30 PM. Mind-blowing! Daily workshops available.</p>
+                    <a href="https://www.instagram.com/p/DOajr7mE-1z/" target="_blank" style="display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; background: linear-gradient(135deg, var(--sunset-orange), var(--deep-purple)); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; font-size: 0.9rem;">📱 Watch Video</a>
+                </div>
+            </div>
+
+            <!-- Friday - Food & Vibes -->
+            <div class="day-card">
+                <!-- Friday Vibes Image -->
+                <img class="day-media" src="https://i.ibb.co/LdVrKg9/friday-vibes-pai.jpg" alt="Friday Night Vibes - Pai" style="object-fit: cover;">
+                <div class="day-content">
+                    <h3>🔊 Friday</h3>
+                    <div class="event-title">Food & Late Night Vibes</div>
+                    <p>Spicy schnitzel pop-up at Big Ass Bar, Shabbat dinner with the community, then late-night sessions at Ganesh Bar to close out the week!</p>
+                    <a href="https://www.instagram.com/p/C7WyZkUycG3/" target="_blank" style="display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; background: linear-gradient(135deg, var(--mustard), var(--sunset-orange)); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; font-size: 0.9rem;">📱 Watch Video</a>
+                </div>
+            </div>
+
+            <!-- Saturday - Fire Jam + Market -->
+            <div class="day-card">
+                <!-- Saturday Vibes Image -->
+                <img class="day-media" src="https://i.ibb.co/xbQ417m/saturday-pai.jpg" alt="Saturday Fire Jam and Market - Pai" style="object-fit: cover;">
+                <div class="day-content">
+                    <h3>🎵 Saturday</h3>
+                    <div class="event-title">Morning Market + Fire Jam + Deep Bass</div>
+                    <p>Start at the local Saturday market, then watch flow artists at the weekly fire jam, and finish with deep bass sessions by the river!</p>
+                    <a href="https://www.instagram.com/p/DPsmtCAD4Nv/" target="_blank" style="display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; background: linear-gradient(135deg, var(--vibrant-green), var(--electric-blue)); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; font-size: 0.9rem;">📱 Watch Video</a>
+                </div>
+            </div>
+
+            <!-- Sunday - Circus -->
+            <div class="day-card">
+                <!-- Sunday Circus Image -->
+                <img class="day-media" src="https://i.ibb.co/fzxV3wX/sunday-circus-pai.jpg" alt="Sunday Circus Show - Paradise Pai" style="object-fit: cover;">
+                <div class="day-content">
+                    <h3>🌟 Sunday</h3>
+                    <div class="event-title">Circus Show @ Paradise Pai</div>
+                    <p>Another round of epic performances to close the week strong!</p>
+                    <a href="https://www.instagram.com/p/DOXw3s8jO7e/" target="_blank" style="display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; background: linear-gradient(135deg, var(--sunset-orange), var(--mustard)); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; font-size: 0.9rem;">📱 Watch Video</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accommodations -->
+    <section id="accommodations" class="accommodations fade-in">
+        <h2 class="section-title">Your Mountain Sanctuary</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem; color: var(--cream);">Sweet Home Pai isn't just a hostel—it's where the magic happens</p>
+        
+        <div class="hostel-features">
+            <div class="feature">
+                <div class="feature-icon">🏔️</div>
+                <h3>Epic Views</h3>
+                <p>Breathtaking sunrises & sunsets over Pai Valley from your hillside haven</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🐓</div>
+                <h3>Farm Life</h3>
+                <p>On-site chickens, goats & Spot the pup for that farm-to-table charm</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🍹</div>
+                <h3>Rooftop Bar</h3>
+                <p>Sunset cocktails & late-night fire jams that make you rethink your checkout date</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🧘</div>
+                <h3>Yoga Deck</h3>
+                <p>Rooftop space for stargazing & morning flows with valley views</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">❄️</div>
+                <h3>Cozy Rooms</h3>
+                <p>AC, free WiFi, shared bathrooms & a communal vibe that hooks you</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🥑</div>
+                <h3>Organic Breakfast</h3>
+                <p>Daily fresh fruits & veggies from local farms to fuel your adventures</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities -->
+    <section id="activities" class="activities fade-in">
+        <h2 class="section-title">Daytime Adventures</h2>
+        
+        <div class="activities-grid">
+            <div class="activity-card">
+                <img src="https://i.ibb.co/zh2fK80/elephant-sanctuary-pai.jpg" alt="Ethical Elephant Sanctuary - Pai" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+                <div class="activity-content">
+                    <h3>Ethical Elephant Encounters</h3>
+                    <p>Feed and bathe gentle giants at sanctuaries—no riding, just pure connection and rescue stories</p>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="https://i.ibb.co/DfkdQn4/tipsy-tubing-pai.jpg" alt="Tipsy Tubing - Pai River" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+                <div class="activity-content">
+                    <h3>Tipsy Tubing</h3>
+                    <p>Float down Pai River with drinks, DJs & games—30 minutes of scenic drifting that'll make you cancel your flight!</p>
+                    <a href="https://www.instagram.com/p/DFdD3D5P5b7/" target="_blank" style="display: inline-block; margin-top: 0.5rem; padding: 0.6rem 1.2rem; background: linear-gradient(135deg, var(--electric-blue), var(--vibrant-green)); color: white; text-decoration: none; border-radius: 20px; font-weight: 600; font-size: 0.85rem;">📱 Watch Video</a>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="https://i.ibb.co/bqWpqwR/hot-springs-pai.jpg" alt="Hot Springs - Pai" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+                <div class="activity-content">
+                    <h3>Hot Springs Soak</h3>
+                    <p>Natural thermal pools perfect for recovery hangs and chill vibes in the forest</p>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="https://i.ibb.co/kgFWG5N/pai-canyon.jpg" alt="Pai Canyon" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+                <div class="activity-content">
+                    <h3>Pai Canyon</h3>
+                    <p>Narrow ridges with epic valley drops—Thailand's "Grand Canyon" for sunset hikes</p>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="https://i.ibb.co/pBF9hpc/waterfall-pai.jpg" alt="Waterfall Hiking - Pai" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+                <div class="activity-content">
+                    <h3>Waterfall Hiking</h3>
+                    <p>Trek through lush jungle trails to hidden waterfalls—swim in crystal-clear pools and discover Pai's natural beauty</p>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="https://i.ibb.co/QvzM9rj/thai-cooking-class-pai.jpg" alt="Thai Cooking Class - Pai" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+                <div class="activity-content">
+                    <h3>Thai Cooking Class</h3>
+                    <p>Learn traditional Thai cooking with bamboo techniques—from pad thai to jungle curries in an authentic local setting</p>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="https://i.ibb.co/0jfcWLc/bamboo-bridge-pai.jpg" alt="Bamboo Bridge - Pai" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+                <div class="activity-content">
+                    <h3>Bamboo Bridges</h3>
+                    <p>800m scenic stroll over rice paddies to hidden temples—pure Thai fairy tale vibes</p>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="https://i.ibb.co/jZ5SDVd/flow-workshops-pai.jpg" alt="Flow Arts Workshops - Paradise Circus" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+                <div class="activity-content">
+                    <h3>Flow Arts Workshops</h3>
+                    <p>Daily circus & flow workshops at Paradise Circus—learn poi, staff, hoops & more from pros!</p>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="https://i.ibb.co/5hQsZ1T/saturday-market-pai.jpg" alt="Saturday Morning Market - Pai" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+                <div class="activity-content">
+                    <h3>Saturday Morning Market</h3>
+                    <p>Local market every Saturday—fresh produce, handmade crafts & authentic Thai street food vibes</p>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="https://i.ibb.co/q3tJvXj/temples-pai.jpg" alt="Temples & Buddhas - Pai" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+                <div class="activity-content">
+                    <h3>Temples & Buddhas</h3>
+                    <p>Hike 353 steps to the Big White Buddha for panoramic views and cultural immersion</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials fade-in">
+        <h2 class="section-title">Caught in the Pai Hole</h2>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <p class="testimonial-text">"Planned 2 nights, stayed 2 months—Pai's vibe is unreal! The Moon Beach raves and sunrise yoga hooked me. I found my tribe here."</p>
+                <p class="testimonial-author">— Jamie, 25, Australia</p>
+            </div>
+
+            <div class="testimonial">
+                <p class="testimonial-text">"Sweet Home Pai became my actual home. The fire jams, the community, the endless parties—I came for a week and stayed for a season."</p>
+                <p class="testimonial-author">— Marco, 28, Italy</p>
+            </div>
+
+            <div class="testimonial">
+                <p class="testimonial-text">"Tipsy Tubing changed my life! Met my best friends floating down that river. Three days turned into three months of pure magic."</p>
+                <p class="testimonial-author">— Sarah, 23, Canada</p>
+            </div>
+
+            <div class="testimonial">
+                <p class="testimonial-text">"The circus shows at Paradise Pai blew my mind every week. I kept extending my stay just to see one more performance!"</p>
+                <p class="testimonial-author">— Leo, 26, Germany</p>
+            </div>
+
+            <div class="testimonial">
+                <p class="testimonial-text">"Daily flow workshops and Barakan Tribe parties—the perfect balance. Came for adventure, stayed for the freedom and vibes."</p>
+                <p class="testimonial-author">— Maya, 24, USA</p>
+            </div>
+
+            <div class="testimonial">
+                <p class="testimonial-text">"Warning is real! Booked one week, canceled my flight home. Pai's magic is addictive—you'll understand when you get here."</p>
+                <p class="testimonial-author">— Alex, 27, UK</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking fade-in">
+        <h2 class="section-title">Ready to Dive In?</h2>
+        <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">Book at your own risk—you might never leave!</p>
+        
+        <div class="booking-form">
+            <form>
+                <div class="form-group">
+                    <label>Group Size</label>
+                    <input type="number" min="1" placeholder="Number of travelers" required>
+                </div>
+                
+                <button type="submit" class="cta-button" style="width: 100%; animation: none;">Submit Inquiry</button>
+            </form>
+            
+            <p style="margin-top: 2rem; color: #666;">Questions? <a href="mailto:info@paiholeexpress.com" style="color: var(--sunset-orange); font-weight: 600;">DM for Details</a></p>
+            
+            <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(124, 179, 66, 0.1); border-radius: 10px; text-align: left;">
+                <h4 style="color: var(--deep-purple); margin-bottom: 1rem;">Package Includes:</h4>
+                <ul style="list-style-position: inside; color: #666;">
+                    <li>7 nights at Sweet Home Pai</li>
+                    <li>Daily breakfast & yoga</li>
+                    <li>All weekly events & parties</li>
+                    <li>Daily flow arts workshops at Paradise Circus</li>
+                    <li>Discounts at Big Ass Bar, On Massage & Reggae Pai</li>
+                </ul>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #999; font-style: italic;">*Transportation to/from Pai not included. We can help arrange transfers!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://instagram.com/paithailand" target="_blank">📷</a>
+            <a href="https://instagram.com/pai_moonbeach_festival" target="_blank">🌙</a>
+            <a href="https://instagram.com/paradise_pai" target="_blank">🎪</a>
+        </div>
+        
+        <p style="margin: 1rem 0; font-size: 1.1rem;">Follow #PaiVibes</p>
+        
+        <p style="color: var(--mustard); margin: 2rem 0;">Full booking system coming soon!</p>
+        
+        <p style="font-size: 0.9rem; opacity: 0.8;">© 2025 Pai Hole Express | Dive Into the Vortex</p>
+    </footer>
+
+    <script>
+        // Smooth scroll animation on load
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const appearOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(element => {
+            appearOnScroll.observe(element);
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thanks for your interest! We\'ll be in touch soon. Warning: Pai might change your life! 🌈');
+        });
+    </script>
+</body>
+</html>>Full Name</label>
+                    <input type="text" placeholder="Your name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="your@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Season</label>
+                    <select required>
+                        <option value="">Select season</option>
+                        <option value="high">High Season (Nov - Feb)</option>
+                        <option value="low">Low Season (Mar - Oct)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Travel Date</label>
+                    <input type="date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label
